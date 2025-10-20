@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+
+  <!-- <meta http-equiv="x-ua-compatible" content="ie=edge"> -->
+
+  <title>3DSR</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- mirror: F0%9F%AA%9E&lt -->
+
+  <link rel="stylesheet" type="text/css" href="./3DSR_files/slick.css">
+  <link rel="stylesheet" type="text/css" href="./3DSR_files/slick-theme.css">
+  <link rel="stylesheet" href="./3DSR_files/bulma.min.css">
+  <link rel="stylesheet" href="./3DSR_files/bulma-slider.min.css">
+  <link rel="stylesheet" href="./3DSR_files/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./3DSR_files/bootstrap.min.css">
+  <link rel="stylesheet" href="./3DSR_files/font-awesome.min.css">
+  <link rel="stylesheet" href="./3DSR_files/codemirror.min.css">
+  <link rel="stylesheet" href="./3DSR_files/app.css">
+  <link rel="stylesheet" href="./3DSR_files/index.css">
+  <link rel="stylesheet" href="./3DSR_files/select.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <script src="./3DSR_files/jquery.min.js"></script>
+  <script src="./3DSR_files/bootstrap.min.js"></script>
+  <script src="./3DSR_files/codemirror.min.js"></script>
+  <script src="./3DSR_files/clipboard.min.js"></script>
+  <script src="./3DSR_files/video_comparison.js"></script>
+  <script src="./3DSR_files/select.js"></script>
+  <script src="./3DSR_files/bulma-slider.min.js"></script>
+  <script src="./3DSR_files/bulma-carousel.min.js"></script>
+  <!-- <script src="./3DSR_files/app.js"></script> -->
+  <script src="./3DSR_files/index.js"></script>
+  <!-- <script src="./3DSR_files/slick.js"></script> -->
+ <style>
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .title, .subtitle, .author-block, .button {
+    font-family: 'Inter', sans-serif !important;
+  }
+</style>
+</head>
+
+<body onload="ChangeSim(0)">
+  <div class="container" id="header" style="text-align: center; margin: auto;">
+    <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block">
+      <h2 class="col-md-12 text-center" id="title" style="font-size: 39px;">
+        <!-- <b>Editing Neural Radiance Fields from <br>a Single Reference Image<br></b> -->
+         <b>Bridging Diffusion Models and 3D Representations:<br>
+        A 3D Consistent Super-Resolution Framework</b>
+      </h2>
+    </div>      
+    <div class="publication-authors" style="text-align: center; line-height: 1.6;">
+      <div>
+        <a href="https://jamie725.github.io/website/" style="font-size: 18px;">Yi-Ting Chen</a><sup>1</sup>&nbsp;&nbsp;
+        <a href="https://tinghliao.github.io/" style="font-size: 18px;">Ting-Hsuan Liao</a><sup>1</sup>&nbsp;&nbsp;
+        <a href="https://psguo.github.io/" style="font-size: 18px;">Pengsheng Guo</a><sup>2</sup>&nbsp;&nbsp;
+        <a href="https://www.alexander-schwing.de/" style="font-size: 18px;">Alexandar Schwing</a><sup>3</sup>&nbsp;&nbsp;
+        <a href="https://jbhuang0604.github.io/" style="font-size: 18px;">Jia-Bin Huang</a><sup>1</sup>
+      </div>
+      <div style="font-size: 18px; margin-top: 5px;">
+        <sup>1</sup>University of Maryland College Park&nbsp;&nbsp;
+        <sup>2</sup>Carnegie Mellon University&nbsp;&nbsp;
+        <sup>3</sup>University of Illinois at Urbana-Champaign
+      </div>
+    </div>    
+    <h2 class="title is-3 publication-title" style="font-size: 26px; margin-top: 20px; margin-bottom: 16px;">ICCV 2025</h2>    
+  <div class="publication-links" style="margin-top: 20px;">
+    <!-- PDF Link -->
+    <span class="link-block" style="margin-right: 10px;">
+      <a href="https://arxiv.org/abs/2508.04090"
+        class="external-link button is-large is-rounded is-dark">
+      
+        <span class="icon is-large">
+          <i class="fas fa-file-pdf fa-lg"></i>
+        </span>
+        <span>Paper</span>
+      </a>
+    </span>
+    <!-- Code Link -->
+    <span class="link-block" style="margin-right: 10px;">
+      <a href="https://github.com/Consistent3DSR/3DSR"
+        class="external-link button is-large is-rounded is-dark">      
+        <span class="icon is-large">
+          <i class="fab fa-github fa-lg"></i>
+        </span>
+        <span>Code</span>
+      </a>
+    </span>
+    <!-- BibTeX Link -->
+    <span class="link-block">
+      <a href="#bibtex-section"
+        class="external-link button is-large is-rounded is-dark">       
+        <span class="icon is-large">
+          <i class="fas fa-book fa-lg"></i>
+        </span>
+        <span>BibTeX</span>
+      </a>
+    </span>
+  </div>
+  </div>
+  <script>
+  </script>
+  <br><br>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <center>
+          <h3>
+            <b>Abstract</b>             
+          </h3>
+          <div class="text-justify" style="width: 51%; font-size: 16px;">
+            We propose 3D Super Resolution (3DSR), a novel 3D Gaussian-splatting-based super-resolution framework that leverages off-the-shelf diffusion-based 2D super-resolution models. 
+            3DSR encourages 3D consistency across views via the use of an explicit 3D Gaussian-splatting-based scene representation. 
+            This makes the proposed 3DSR different from prior work such as  image upsampling or the use of video super-resolution, which either don't consider 3D consistency or aim to incorporate 3D consistency implicitly. 
+            Notably, our method enhances visual quality without additional fine-tuning, ensuring spatial coherence within the reconstructed scene. 
+            We evaluate 3DSR on MipNeRF360 and LLFF data, demonstrating that it produces high-resolution results that are visually compelling, while maintaining structural consistency in 3D reconstructions.             
+          </div>
+        <br><br><br>
+        <h3>
+          <b>Method Overview</b>
+        </h3>          
+          <img src="./3DSR_files/images/overview_3dsr.png" class="img-responsive" alt="overview" width="60%"
+            style="max-height: 500px;margin:auto;">
+        
+        <br/><br/><br/>
+        <div class="text-justify" style="width: 51%; font-size: 16px;">
+          Given a latent x at timestep t, we first estimate the clean image x0 using the denoiser of a pre-trained diffusion model. To enforce 3D consistency, we leverage 3D Gaussian Splatting (3DGS) by treating the predicted clean images as training data. The 3DGS model renders high-resolution, view-consistent images, which are then re-encoded into the latent space to estimate the latent of the next denoising step.
+           
+        </div>      
+      </center>
+      </div>
+    </div>
+      <br><br><br>
+      <div class="row">
+      <div class="col-md-10 col-md-offset-1" >
+        <h3>
+          Interactive video demo
+        </h3>
+        <!-- <p>
+          <font size="3" color="gray">
+            * You can select different <b>applications</b> on different <b>scenes</b> and compare
+            our <b>method</b> with baselines.
+            <br />
+            <br />
+            
+          </font>
+        </p> -->
+
+        <center>
+          
+          <div class="video-compare-container" id="ours" style="width: 100%">
+            <video class="video" id="simulation_video" loop="true" playsinline="" autoplay="" muted=""
+              poster="3DSR_files/loading.gif" src="3DSR_files/videos/mipnerf360_16x/bonsai_comparison_LR.mp4"
+              onplay="resizeAndPlay(this)">
+            </video> 
+            <div style="margin-top: -20px; margin-bottom: 10px;">              
+              <button id="toggleButton" onclick="toggleSimulation()" style="font-size: 20px; padding: 15px 20px;">
+                ⏸ Stop
+              </button>
+              <script>
+                let isPlaying = true;  // Start with the assumption that video is already playing
+
+                function updatePlayButtonUI() {
+                  const button = document.getElementById("toggleButton");
+                  button.innerHTML = "⏸ Stop";
+                  isPlaying = true;
+                }
+
+                function toggleSimulation() {
+                  const button = document.getElementById("toggleButton");
+
+                  if (isPlaying) {
+                    stopSimulationVideo();
+                    button.innerHTML = "▶️ Play";
+                  } else {
+                    playSimulationVideo();
+                    button.innerHTML = "⏸ Stop";
+                  }
+
+                  isPlaying = !isPlaying;
+                }
+
+                function playSimulationVideo() {
+                  console.log("Playing video...");
+                  // video.play(); or any other logic
+                }
+
+                function stopSimulationVideo() {
+                  console.log("Stopping video...");
+                  // video.pause(); or any other logic
+                }
+              </script>
+              <br /> 
+              <br />            
+            </div>
+            <canvas class="videoMerge" id="simulation_videoMerge"></canvas>
+          </div>
+          <!-- <video class="video" id="baseline" loop="" playsinline="" autoplay="" muted=""
+            poster="3DSR_files/loading.gif" src="3DSR_files/videos/LLFF/fern_comparison_LR.mp4" style="width: 0%">
+          </video> -->
+          <br><br>
+          <h4>
+            Applications
+          </h4>
+          <ul class="nav nav-pills nav-justified" id="sim-view-ul" style="width: 60%">
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeSim(0);">LLFF</a></li>                        
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeSim(1);">MipNeRF360 &#8595 16 &#8593 4</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeSim(2);">MipNeRF360 &#8595 8 &#8593 4</a></li>
+            <!-- <li role="presentation" class="active"><a href="javascript: void(0);" onclick="ChangeSim(1);">MipNeRF360 &#8595 16 &#8593 4</a></li> -->
+              <!--<li role="presentation"><a href="javascript: void(0);" onclick="ChangeSim(2);">Smog</a></li>-->
+          </ul>
+          <h4>
+            Scene
+          </h4>
+          <ul class="nav nav-pills nav-justified" id="scene-view-ul" style="width: 60%">
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(0);">trex</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(1);">flower</a></li>        
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(2);">leaves</a></li>
+            <!-- <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(3);">fortress</a></li>         -->
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(3);">horns</a></li>            
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(4);">room</a></li>
+            <!-- <br /> -->
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(5);">bicycle</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(6);">bonsai</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(7);">garden</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(8);">kitchen</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(9);">stump</a></li>      
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(10);">treehill</a></li>
+            <!-- <br /> -->
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(11);">bicycle</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(12);">bonsai</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(13);">garden</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(14);">kitchen</a></li>
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(15);">stump</a></li>      
+            <li role="presentation"><a href="javascript: void(0);" onclick="ChangeScene(16);">treehill</a></li>
+          </ul>
+          <h4>
+            Method
+          </h4>
+          <ul class="nav nav-pills nav-justified" id="method-view-ul" style="width: 60%">
+            <li role="presentation" class="active"><a href="javascript: void(0);" onclick="ChangeMethod(0);">LR</a></li>        
+            <li role="presentation" class=""><a href="javascript: void(0);" onclick="ChangeMethod(1);">StableSR</a></li>
+            <li role="presentation" class=""><a href="javascript: void(0);" onclick="ChangeMethod(2);">SuperGaussian</a></li>
+            <!-- <li role="presentation" class=""><a href="javascript: void(0);" onclick="ChangeMethod(3);">DiSR-NeRF</a></li>                 -->
+          </ul>
+        </center>
+        <br>
+        <br>
+      </div>
+      <!-- <div class="row"> -->
+    <div class="row">
+    <br><br>
+  <div class="col-md-10 col-md-offset-1 has-text-centered" id="bibtex-section">
+
+    <!-- Heading and Button on the same line -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
+      <h3 style="margin: 0;">BibTeX</h3>
+      <button onclick="copyBibTex()" style="padding: 6px 12px; font-size: 14px;">
+        📋 Copy BibTeX
+      </button>
+    </div>
+
+    <!-- BibTeX code block -->
+    <pre style="text-align: left; display: inline-block; background-color: #f8f8f8; padding: 15px; border-radius: 6px;"><code id="bibtex">
+@inproceedings{chen2025bridging,
+  author  = {Chen, Yi-Ting and Liao, Ting-Hsuan and Guo, Pengsheng and Schwing, Alexander and Huang, Jia-Bin},
+  title   = {Bridging Diffusion Models and 3D Representations: A 3D Consistent Super-Resolution Framework},
+  journal = {Proceedings of the International Conference on Computer Vision Conference},
+  year    = {2025}
+}</code></pre>
+
+  </div>
+</div>
+
+        <script>
+          function copyBibTex() {
+            const code = document.getElementById("bibtex").innerText;
+            const textarea = document.createElement("textarea");
+            textarea.value = code;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+              document.execCommand("copy");
+              alert("Copied to clipboard!");
+            } catch (err) {
+              alert("Copy failed.");
+            }
+            document.body.removeChild(textarea);
+          }
+        </script>
+      </div>
+      <div class="col-md-10 col-md-offset-3">
+        <h3>
+          Acknowledgements
+        </h3>
+
+        The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a>, <A
+          href="https://dorverbin.github.io/refnerf/index.html">RefNeRF</a> , <A
+          href="https://nerfies.github.io/">Nerfies</A> and <A
+          href="https://hhsinping.github.io/svs/supp/visual_comparison.html">Semantic View Synthesis</a>.
+      </div>
+    <!-- </div> -->
+    </div>  
+    <script>
+      function stopSimulationVideo() {
+        const video = document.getElementById("simulation_video");
+        video.pause();
+      }    
+      function playSimulationVideo() {
+        const video = document.getElementById("simulation_video");
+        video.play();
+      }
+    </script>
+    <script>
+      function resetPlayButton() {
+        const button = document.getElementById("toggleButton");
+        if (button) {
+          button.innerHTML = "⏸ Stop";
+          isPlaying = true;
+        }
+      }
+    </script>
+</body>
+
+</html>
